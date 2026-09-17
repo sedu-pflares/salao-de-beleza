@@ -1,0 +1,1252 @@
+<!doctype html>
+<html lang='pt-BR'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1'>
+<title id='pageTitle'>S.Edu Salão de Beleza — Gestão</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+<style>
+:root{--p:#6f42c1;--p2:#8b5cf6;--bg:#f5f7fb;--card:#fff;--text:#20232a;--muted:#6b7280;--line:#e7eaf0;--ok:#16a34a;--warn:#d97706;--danger:#dc2626;--info:#2563eb}*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.side{width:260px;background:#17131f;color:#fff;position:fixed;inset:0 auto 0 0;padding:18px 14px;overflow:auto;z-index:11;transition:transform .3s ease}.brand{display:flex;gap:10px;align-items:center;padding:8px 10px 22px;font-weight:800;font-size:16px}.brand img{width:38px;height:38px;border-radius:11px;object-fit:cover;background:#fff}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#d9d3e2;text-align:left;padding:11px 12px;border-radius:10px;display:flex;gap:10px;align-items:center;width:100%}.nav button:hover,.nav button.active{background:#30263e;color:#fff}.main{margin-left:260px;width:calc(100% - 260px);transition:margin .3s ease}.top{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 26px;position:sticky;top:0;z-index:10}.top .search{width:360px}.content{padding:26px}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}.title h1{margin:0;font-size:26px}.muted{color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 4px 16px #15151508}.metric{display:flex;justify-content:space-between;align-items:center}.metric strong{font-size:22px}.icon{width:44px;height:44px;border-radius:12px;background:#f1eaff;color:var(--p);display:grid;place-items:center;font-size:20px}.table-responsive{width:100%;overflow-x:auto}.table{width:100%;border-collapse:collapse;min-width:600px}.table th,.table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}.table th{color:var(--muted);font-weight:600}.btn{border:1px solid var(--line);background:#fff;border-radius:99px;padding:9px 16px;font-weight:600}.btn.primary{background:var(--p);border-color:var(--p);color:#fff}.btn.ghost{background:#f7f5fb;color:var(--p);border-color:#e8def8}.btn.danger{background:#fee2e2;color:var(--danger);border-color:#fca5a5}.btn.success{background:#dcfce7;color:var(--ok);border-color:#86efac}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:#fff}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{font-size:12px;font-weight:600;display:block;margin-bottom:6px}.field.full{grid-column:1/-1}.badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:700}.b-ok{background:#dcfce7;color:#166534}.b-warn{background:#fef3c7;color:#92400e}.b-danger{background:#fee2e2;color:#991b1b}.pos{display:grid;grid-template-columns:1fr 380px;gap:16px}.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}.prod{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}.prod img{width:100%;height:120px;object-fit:cover;background:#eee}.prod .pbody{padding:11px}.cart{position:sticky;top:90px;height:max-content}.cartline{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.total{font-size:22px;font-weight:800;display:flex;justify-content:space-between;padding:16px 0}.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.show{display:flex}.modalbox{background:#fff;border-radius:16px;width:min(600px,100%);max-height:90vh;overflow:auto;padding:22px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.toast{position:fixed;right:20px;bottom:20px;background:#17131f;color:#fff;padding:12px 16px;border-radius:10px;display:none;z-index:80}.empty{padding:30px;text-align:center;color:var(--muted)}.filter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:18px;background:#fff;padding:14px;border-radius:14px;border:1px solid var(--line)}.btn-wa{background:#25d366;color:#fff;border:0;padding:6px 12px;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:12px}.btn-copy{background:#4b5563;color:#fff;border:0;padding:6px 10px;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:4px;font-size:12px;cursor:pointer}
+
+/* ALERTAS DO DIA */
+.alert-box{background:#fff;border-radius:14px;border:1px solid var(--line);padding:14px;margin-bottom:20px;box-shadow:0 2px 10px #0000000d}
+.alert-item{padding:10px 12px;border-radius:10px;background:#f9fafb;margin-top:8px;display:flex;align-items:center;justify-content:space-between;border-left:4px solid var(--p)}
+.alert-item.urgent{background:#fef2f2;border-left-color:var(--danger);animation:pulse 1.5s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(220,38,38,0.4)}70%{box-shadow:0 0 0 8px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}
+
+/* STOREFRONT */
+body.storefront-mode .side,body.storefront-mode .top{display:none!important}
+body.storefront-mode .main{margin-left:0!important;width:100%!important}
+body.storefront-mode .content{padding:0!important}
+.storefront{min-height:100vh;background:#f4f4f6;padding-bottom:80px}
+.sf-nav{height:54px;background:#1e2226;color:#fff;display:flex;align-items:center;justify-content:space-around;position:sticky;top:0;z-index:20}
+.sf-nav button{border:0;background:none;color:#fff;font-size:11px;font-weight:800;display:flex;flex-direction:column;align-items:center;gap:2px}
+.sf-cover{height:200px;background:#4a2e80;position:relative;background-size:cover;background-position:center}
+.sf-wrap{width:min(900px,100%);margin:0 auto;padding:0 14px}
+.sf-head{background:#fff;border-radius:16px;margin-top:-40px;padding:16px;position:relative;z-index:2;box-shadow:0 4px 12px #0001;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.sf-logo{width:80px;height:80px;border-radius:14px;object-fit:cover;background:#6f42c1;border:2px solid #fff;box-shadow:0 2px 8px #0002}
+.sf-info h1{margin:0 0 4px;font-size:20px}
+.sf-main{margin-top:20px}
+.sf-search input{height:44px;border:1px solid var(--line);border-radius:12px;width:100%;padding:0 16px;background:#fff;margin-bottom:14px}
+.sf-cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}
+.sf-cat{border:0;background:#fff;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 1px 3px #0001}
+.sf-cat.active{background:var(--p);color:#fff}
+.sf-list{display:grid;gap:10px;margin-top:10px}
+.sf-product{background:#fff;border-radius:12px;display:grid;grid-template-columns:80px 1fr auto;gap:12px;padding:10px;align-items:center;box-shadow:0 1px 3px #0001}
+.sf-product img{width:80px;height:80px;border-radius:8px;object-fit:cover}
+.sf-price{color:var(--ok);font-weight:800;font-size:15px;margin-top:4px}
+
+.float-widgets{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:12px;z-index:99}
+.float-btn{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:24px;box-shadow:0 4px 12px #0003;text-decoration:none;transition:transform .2s}
+.float-btn:hover{transform:scale(1.1)}
+.float-wa{background:#25d366}
+.float-map{background:#ea4335}
+
+.menu-btn{display:none;background:none;border:0;font-size:22px;cursor:pointer}
+@media (max-width:768px){
+  .side{transform:translateX(-100%);width:240px}
+  .side.open{transform:translateX(0)}
+  .main{margin-left:0;width:100%}
+  .top .search{display:none}
+  .menu-btn{display:block}
+  .pos{grid-template-columns:1fr}
+  .formgrid{grid-template-columns:1fr}
+  .sf-product{grid-template-columns:1fr;text-align:center}
+  .sf-product img{margin:0 auto}
+  .sf-head{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body id='bodyRoot'>
+<div class='app'>
+  <aside class='side' id='sideBar'>
+    <div class='brand' onclick="openScreen('storefront')" style='cursor:pointer'>
+      <img id='brandLogo' src="" alt="Logo">
+      <span id='brandName'>S.Edu Salão de Beleza</span>
+    </div>
+    <div class='nav' id='nav'></div>
+  </aside>
+  <main class='main'>
+    <header class='top'>
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <input class='input search' id='globalSearch' placeholder='Pesquisar no sistema...'>
+      <div class='actions'>
+        <button class='btn ghost' onclick="openScreen('storefront')">💈 Ver Loja</button>
+        <button class='btn' onclick="openScreen('settings')">⚙ Configurações</button>
+        <button class='btn primary' onclick="openScreen('pdv')">＋ Novo atendimento</button>
+      </div>
+    </header>
+    <section class='content' id='appContent'></section>
+  </main>
+</div>
+<div class='modal' id='modal'><div class='modalbox' id='modalBox'></div></div>
+<div class='toast' id='toast'></div>
+
+<script>
+const DEFAULT_COVER = 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80';
+const DEFAULT_LOGO = 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=200&q=80';
+
+const S = {
+  company:{
+    name:'S.Edu Salão de Beleza',
+    phone:'(31) 97112-7212',
+    address:'Av. Principal, 500 - Centro',
+    whatsapp:'5531971127212',
+    logo:DEFAULT_LOGO,
+    cover:DEFAULT_COVER,
+    isOpen: true,
+    openTime: '08:00',
+    closeTime: '18:00',
+    customStatuses: ['Agendado', 'Em Andamento', 'Concluído', 'Cancelado']
+  },
+  products:[
+    {id:1,name:'Corte & Escova Feminina',cat:'Cabelo',price:120,description:'Corte personalizado com lavagem especial e escova modeladora.',img:'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=500&q=80'},
+    {id:2,name:'Coloração Completa',cat:'Cabelo',price:180,description:'Aplicação de coloração com hidratação pós-química.',img:'https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=500&q=80'},
+    {id:3,name:'Manicure e Pedicure',cat:'Unhas',price:65,description:'Cutilagem e esmaltação completa de mãos e pés.',img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=80'},
+    {id:4,name:'Design de Sobrancelhas',cat:'Estética',price:45,description:'Design com alinhamento facial e medição técnica.',img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80'},
+    {id:5,name:'Maquiagem Social',cat:'Maquiagem',price:150,description:'Maquiagem completa para festas e eventos com cílios inclusos.',img:'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=500&q=80'}
+  ],
+  clients:[
+    {id:1,name:'Ana Paula Ribeiro',phone:'31999990000',cpf:'123.456.789-00',visitsGoal:10},
+    {id:2,name:'Paulo',phone:'31971127212',cpf:'000.000.000-00',visitsGoal:5}
+  ],
+  employees:[{id:1,name:'Juliana Silva',role:'Cabeleireira'},{id:2,name:'Beatriz Costa',role:'Manicure'}],
+  orders:[
+    {id:'10001',client:'Paulo',phone:'31971127212',service:'Corte & Escova Feminina',employee:'Juliana Silva',date: new Date().toISOString().split('T')[0],time:'08:00',total:120,status:'Concluído'},
+    {id:'10002',client:'Ana Paula Ribeiro',phone:'31999990000',service:'Manicure e Pedicure',employee:'Beatriz Costa',date: new Date().toISOString().split('T')[0],time:'10:00',total:65,status:'Agendado'}
+  ]
+};
+
+try{
+  const local = localStorage.getItem('gestorpro_beauty');
+  if(local){
+    const parsed = JSON.parse(local);
+    Object.assign(S, parsed);
+    if(!S.company.customStatuses){
+      S.company.customStatuses = ['Agendado', 'Em Andamento', 'Concluído', 'Cancelado'];
+    }
+  }
+}catch(e){}
+
+function save(){
+  try{localStorage.setItem('gestorpro_beauty',JSON.stringify(S))}catch(e){}
+  updateBrandUI();
+}
+
+function toggleSidebar(){
+  document.getElementById('sideBar')?.classList.toggle('open');
+}
+
+function updateBrandUI(){
+  const brandName = document.getElementById('brandName');
+  const brandLogo = document.getElementById('brandLogo');
+  if(brandName) brandName.textContent = S.company.name || 'S.Edu Salão de Beleza';
+  if(brandLogo) brandLogo.src = S.company.logo || DEFAULT_LOGO;
+}
+
+function money(v){return (Number(v)||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function toast(t){let x=document.getElementById('toast');if(!x)return;x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2500)}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+
+function convertImageToBase64(fileInput, callback){
+  if(!fileInput || !fileInput.files || !fileInput.files[0]) return callback(null);
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+  reader.onload = e => callback(e.target.result);
+  reader.readAsDataURL(file);
+}
+
+function generateWhatsappText(order){
+  return `Olá ${order.client}! Confirmamos o seu agendamento no ${S.company.name}:\n\n` +
+         `✂️ *Serviço:* ${order.service}\n` +
+         `👤 *Profissional:* ${order.employee||'A definir'}\n` +
+         `📅 *Data/Hora:* ${order.date||''} às ${order.time||''}\n` +
+         `💰 *Valor:* ${money(order.total)}\n\n` +
+         `Podemos confirmar sua presença?`;
+}
+
+function copyWhatsappMessage(orderId){
+  const order = S.orders.find(o=>String(o.id)===String(orderId));
+  if(!order) return;
+  const msg = generateWhatsappText(order);
+  navigator.clipboard.writeText(msg).then(()=>{
+    toast('📋 Texto copiado para a área de transferência!');
+  }).catch(()=>{
+    toast('Erro ao copiar texto.');
+  });
+}
+
+const menus=[
+  ['storefront','💈','Serviços / Agendar'],
+  ['dashboard','▦','Dashboard'],
+  ['pdv','▣','Atendimento / PDV'],
+  ['orders','📅','Agendamentos'],
+  ['products','✂️','Serviços / Preços'],
+  ['clients','♙','Clientes'],
+  ['employees','💅','Profissionais'],
+  ['settings','⚙','Configurações']
+];
+
+function buildNav(){
+  const nav = document.getElementById('nav');
+  if(nav){
+    nav.innerHTML=menus.map(m=>`<button data-screen='${m[0]}' onclick="openScreen('${m[0]}')"><b>${m[1]}</b><span>${m[2]}</span></button>`).join('');
+  }
+}
+
+function openScreen(s){
+  document.getElementById('sideBar')?.classList.remove('open');
+  if(s!=='storefront'){
+    document.body.classList.remove('storefront-mode');
+  }
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.screen===s));
+  
+  if(s === 'storefront') storefront();
+  else if(s === 'dashboard') dashboard();
+  else if(s === 'pdv') pdv();
+  else if(s === 'orders') orders();
+  else if(s === 'products') products();
+  else if(s === 'clients') clients();
+  else if(s === 'employees') employees();
+  else if(s === 'settings') settings();
+  
+  window.scrollTo(0,0);
+}
+
+/* STOREFRONT */
+function storefront(){
+  document.body.classList.add('storefront-mode');
+  const c = document.getElementById('appContent');
+  const name = S.company.name || 'S.Edu Salão de Beleza';
+  const cats = [...new Set((S.products||[]).map(p=>p.cat||'Geral'))];
+  
+  const statusBadge = S.company.isOpen 
+    ? `<span class="badge b-ok">🟢 Aberto • ${S.company.openTime||'08:00'} às ${S.company.closeTime||'18:00'}</span>`
+    : `<span class="badge b-danger">🔴 Fechado</span>`;
+
+  const cleanPhone = (S.company.whatsapp || S.company.phone || '').replace(/\D/g,'');
+  const waLink = cleanPhone ? `https://api.whatsapp.com/send?phone=${cleanPhone.length <= 11 ? '55' + cleanPhone : cleanPhone}&text=Ol%C3%A1!` : '#';
+  const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(S.company.address || name)}`;
+
+  c.innerHTML = `
+  <div class="storefront">
+    <nav class="sf-nav">
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})">💈 SERVIÇOS</button>
+      <button onclick="openScreen('dashboard')">⚙ PAINEL</button>
+    </nav>
+    <div class="sf-cover" style="background-image:url('${S.company.cover||DEFAULT_COVER}')"></div>
+    <div class="sf-wrap">
+      <div class="sf-head">
+        <img class="sf-logo" src="${S.company.logo||DEFAULT_LOGO}" alt="Logo">
+        <div>
+          <h1>${escapeHtml(name)}</h1>
+          <div style="margin-top:4px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            ${statusBadge}
+            <span class="muted" style="font-size:12px">📍 ${escapeHtml(S.company.address)}</span>
+          </div>
+        </div>
+      </div>
+      <main class="sf-main">
+        <div class="sf-search">
+          <input id="storeSearch" placeholder="Buscar serviço de beleza..." oninput="renderStoreProducts()">
+        </div>
+        <div class="sf-cats">
+          <button class="sf-cat active" onclick="filterStoreCat('', this)">TODOS</button>
+          ${cats.map(cat=>`<button class="sf-cat" onclick="filterStoreCat('${cat}', this)">${cat.toUpperCase()}</button>`).join('')}
+        </div>
+        <div id="storeProducts" class="sf-list"></div>
+      </main>
+    </div>
+    <div class="float-widgets">
+      <a href="${mapLink}" target="_blank" class="float-btn float-map" title="Traçar rota no Google Maps">🗺️</a>
+      <a href="${waLink}" target="_blank" class="float-btn float-wa" title="Falar no WhatsApp">💬</a>
+    </div>
+  </div>`;
+  window.currentCat = '';
+  renderStoreProducts();
+}
+
+function filterStoreCat(cat, btn){
+  window.currentCat = cat;
+  document.querySelectorAll('.sf-cat').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderStoreProducts();
+}
+
+function renderStoreProducts(){
+  const box = document.getElementById('storeProducts');
+  if(!box) return;
+  const q = (document.getElementById('storeSearch')?.value||'').toLowerCase();
+  const list = S.products.filter(p=> (!window.currentCat || p.cat === window.currentCat) && (!q || p.name.toLowerCase().includes(q)));
+  
+  if(!list.length){
+    box.innerHTML = '<div class="empty">Nenhum serviço encontrado.</div>';
+    return;
+  }
+  
+  box.innerHTML = list.map(p=>`
+    <div class="sf-product">
+      <img src="${p.img||placeholder(p.name)}" alt="${escapeHtml(p.name)}">
+      <div>
+        <strong style="font-size:14px;display:block">${escapeHtml(p.name)}</strong>
+        <span class="muted" style="font-size:12px">${escapeHtml(p.description||p.cat)}</span>
+        <div class="sf-price">${money(p.price)}</div>
+      </div>
+      <button class="btn primary" onclick="openBookingModal(${p.id})">Agendar</button>
+    </div>
+  `).join('');
+}
+
+function openBookingModal(id){
+  const p = S.products.find(x=>x.id===id);
+  if(!p) return;
+  const today = new Date().toISOString().split('T')[0];
+  
+  document.getElementById('modalBox').innerHTML = `
+    <div class="modalhead">
+      <h3>Agendar: ${escapeHtml(p.name)}</h3>
+      <button class="btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="formgrid">
+      <div class="field full">
+        <label>Buscar por WhatsApp ou CPF</label>
+        <input class="input" id="bLookup" placeholder="Digite Fone ou CPF..." oninput="autoLookupClient(this.value)">
+      </div>
+      <div class="field"><label>Seu Nome</label><input class="input" id="bName" placeholder="Nome completo"></div>
+      <div class="field"><label>Seu WhatsApp</label><input class="input" id="bPhone" placeholder="31971127212"></div>
+      <div class="field full"><label>CPF</label><input class="input" id="bCpf" placeholder="000.000.000-00"></div>
+      <div class="field full"><div id="bFidelityTag" style="display:none;font-size:12px;" class="badge b-ok"></div></div>
+      <div class="field"><label>Data</label><input type="date" class="input" id="bDate" value="${today}"></div>
+      <div class="field"><label>Horário</label>
+        <select class="input" id="bTime">
+          <option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option>
+          <option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option>
+        </select>
+      </div>
+      <div class="field full"><label>Profissional</label>
+        <select class="input" id="bEmp">
+          ${S.employees.map(e=>`<option value="${e.name}">${e.name} (${e.role})</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <button class="btn primary" style="width:100%;margin-top:16px" onclick="confirmBooking('${escapeHtml(p.name)}', ${p.price})">Confirmar Agendamento (${money(p.price)})</button>
+  `;
+  document.getElementById('modal').classList.add('show');
+}
+
+function autoLookupClient(val){
+  const clean = val.replace(/\D/g,'');
+  if(!clean || clean.length < 3) return;
+  const currentYear = new Date().getFullYear();
+  
+  const found = S.clients.find(c=>
+    (c.phone && c.phone.replace(/\D/g,'').includes(clean)) ||
+    (c.cpf && c.cpf.replace(/\D/g,'').includes(clean))
+  );
+
+  if(found){
+    document.getElementById('bName').value = found.name;
+    document.getElementById('bPhone').value = found.phone;
+    if(found.cpf) document.getElementById('bCpf').value = found.cpf;
+
+    const visits = getClientYearlyVisits(found.name, found.phone, currentYear);
+    const tag = document.getElementById('bFidelityTag');
+    if(tag){
+      tag.style.display = 'inline-block';
+      tag.textContent = `★ Cartão Fidelidade: ${visits} / ${found.visitsGoal||10} visitas efetuadas`;
+    }
+  }
+}
+
+function checkEmpAvailability(emp, date, time, currentOrderId = null){
+  return !S.orders.some(o => 
+    o.employee === emp &&
+    o.date === date &&
+    o.time === time &&
+    o.status !== 'Cancelado' &&
+    String(o.id) !== String(currentOrderId)
+  );
+}
+
+function confirmBooking(serviceName, price){
+  const name = document.getElementById('bName')?.value.trim();
+  const phone = document.getElementById('bPhone')?.value.trim();
+  const cpf = document.getElementById('bCpf')?.value.trim() || '';
+  const date = document.getElementById('bDate')?.value;
+  const time = document.getElementById('bTime')?.value;
+  const emp = document.getElementById('bEmp')?.value;
+
+  if(!name || !phone) return toast('Preencha seu nome e WhatsApp');
+
+  if(!checkEmpAvailability(emp, date, time)){
+    return toast(`O profissional ${emp} já tem agendamento em ${date} às ${time}!`);
+  }
+
+  registerClientIfNew(name, phone, cpf);
+
+  const newOrder = {
+    id: String(Date.now()).slice(-5),
+    client: name,
+    phone: phone,
+    service: serviceName,
+    employee: emp,
+    date: date,
+    time: time,
+    total: price,
+    status: 'Agendado'
+  };
+
+  S.orders.push(newOrder);
+  save();
+  copyWhatsappMessage(newOrder.id);
+
+  toast('Agendamento realizado!');
+  closeModal();
+  openScreen('orders');
+}
+
+function registerClientIfNew(name, phone, cpf=''){
+  const cleanPhone = phone.replace(/\D/g,'');
+  const cleanCpf = cpf.replace(/\D/g,'');
+
+  let exists = S.clients.find(c=>
+    (cleanPhone && c.phone.replace(/\D/g,'') === cleanPhone) ||
+    (cleanCpf && c.cpf && c.cpf.replace(/\D/g,'') === cleanCpf) ||
+    c.name.toLowerCase() === name.toLowerCase()
+  );
+
+  if(!exists){
+    S.clients.push({ id: Date.now(), name: name, phone: phone, cpf: cpf, visitsGoal: 10 });
+  } else if(cpf && !exists.cpf) {
+    exists.cpf = cpf;
+  }
+}
+
+/* DASHBOARD */
+function dashboard(){
+  const c = document.getElementById('appContent');
+  const services = [...new Set(S.products.map(p=>p.name))];
+  const emps = S.employees.map(e=>e.name);
+  const statuses = S.company.customStatuses || ['Agendado', 'Em Andamento', 'Concluído', 'Cancelado'];
+
+  const now = new Date();
+  const curYr = String(now.getFullYear());
+  const curMo = String(now.getMonth() + 1).padStart(2,'0');
+  const todayStr = now.toISOString().split('T')[0];
+
+  const todayOrders = S.orders.filter(o => o.date === todayStr && o.status !== 'Cancelado');
+  const totalToday = todayOrders.length;
+  const completedToday = todayOrders.filter(o => o.status === 'Concluído').length;
+  const pendingToday = todayOrders.filter(o => o.status !== 'Concluído').length;
+
+  c.innerHTML = `
+    <div class="title"><h1>Dashboard</h1></div>
+    
+    <div class="cards" style="margin-bottom:20px">
+      <div class="card metric" style="border-left:4px solid var(--info)">
+        <div><div class="muted">Atendimentos Hoje</div><strong>${totalToday}</strong></div>
+        <div class="icon">📊</div>
+      </div>
+      <div class="card metric" style="border-left:4px solid var(--ok)">
+        <div><div class="muted">Concluídos Hoje</div><strong style="color:var(--ok)">${completedToday}</strong></div>
+        <div class="icon">✅</div>
+      </div>
+      <div class="card metric" style="border-left:4px solid var(--warn)">
+        <div><div class="muted">Faltam no Dia</div><strong style="color:var(--warn)">${pendingToday}</strong></div>
+        <div class="icon">⏳</div>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <h3 style="margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px">
+        🔔 Agendamentos de Hoje (${now.toLocaleDateString('pt-BR')})
+      </h3>
+      <div id="todayAlertsList"></div>
+    </div>
+
+    <div class="filter-grid">
+      <div>
+        <label style="font-size:11px;font-weight:700">Ano</label>
+        <input type="number" id="fYear" class="input" value="${curYr}" oninput="renderDashboardStats()">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700">Mês</label>
+        <select id="fMonth" class="input" onchange="renderDashboardStats()">
+          <option value="">Todos</option>
+          <option value="01" ${curMo==='01'?'selected':''}>Janeiro</option>
+          <option value="02" ${curMo==='02'?'selected':''}>Fevereiro</option>
+          <option value="03" ${curMo==='03'?'selected':''}>Março</option>
+          <option value="04" ${curMo==='04'?'selected':''}>Abril</option>
+          <option value="05" ${curMo==='05'?'selected':''}>Maio</option>
+          <option value="06" ${curMo==='06'?'selected':''}>Junho</option>
+          <option value="07" ${curMo==='07'?'selected':''}>Julho</option>
+          <option value="08" ${curMo==='08'?'selected':''}>Agosto</option>
+          <option value="09" ${curMo==='09'?'selected':''}>Setembro</option>
+          <option value="10" ${curMo==='10'?'selected':''}>Outubro</option>
+          <option value="11" ${curMo==='11'?'selected':''}>Novembro</option>
+          <option value="12" ${curMo==='12'?'selected':''}>Dezembro</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700">Dia</label>
+        <input type="number" id="fDay" class="input" min="1" max="31" placeholder="Ex: 17" oninput="renderDashboardStats()">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700">Telefone</label>
+        <input id="fPhone" class="input" placeholder="Buscar fone..." oninput="renderDashboardStats()">
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700">Serviço</label>
+        <select id="fService" class="input" onchange="renderDashboardStats()">
+          <option value="">Todos</option>
+          ${services.map(s=>`<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700">Funcionário</label>
+        <select id="fEmp" class="input" onchange="renderDashboardStats()">
+          <option value="">Todos</option>
+          ${emps.map(e=>`<option value="${escapeHtml(e)}">${escapeHtml(e)}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:700">Status</label>
+        <select id="fStatus" class="input" onchange="renderDashboardStats()">
+          <option value="">Todos</option>
+          ${statuses.map(st=>`<option value="${escapeHtml(st)}">${escapeHtml(st)}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card metric"><div><div class="muted">Fat. Previsto</div><strong id="dFatPrev">R$ 0,00</strong></div><div class="icon">📈</div></div>
+      <div class="card metric"><div><div class="muted">Fat. Realizado</div><strong id="dFatReal" style="color:var(--ok)">R$ 0,00</strong></div><div class="icon">💰</div></div>
+      <div class="card metric"><div><div class="muted">Atendimentos Filtrados</div><strong id="dOrd">0</strong></div><div class="icon">📅</div></div>
+      <div class="card metric"><div><div class="muted">Clientes Totais</div><strong>${S.clients.length}</strong></div><div class="icon">♙</div></div>
+    </div>
+
+    <div class="card" style="margin-top:20px">
+      <h3>Resumo dos Atendimentos Filtrados</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead><tr><th>Cliente</th><th>Telefone</th><th>Serviço</th><th>Profissional</th><th>Data/Hora</th><th>Status</th><th>Valor</th></tr></thead>
+          <tbody id="dTable"></tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  renderTodayAlerts();
+  renderDashboardStats();
+}
+
+function renderTodayAlerts(){
+  const box = document.getElementById('todayAlertsList');
+  if(!box) return;
+  
+  const todayStr = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const todayOrders = S.orders.filter(o=>o.date === todayStr && o.status !== 'Cancelado');
+
+  if(!todayOrders.length){
+    box.innerHTML = '<div class="muted" style="font-size:13px">Nenhum agendamento para hoje.</div>';
+    return;
+  }
+
+  box.innerHTML = todayOrders.map(o => {
+    let isUrgent = false;
+    let labelDiff = '';
+
+    if(o.time){
+      const [h, m] = o.time.split(':').map(Number);
+      const appTime = new Date();
+      appTime.setHours(h, m, 0, 0);
+
+      const diffMin = Math.round((appTime - now) / 60000);
+
+      if(diffMin >= -15 && diffMin <= 10 && o.status === 'Agendado'){
+        isUrgent = true;
+        labelDiff = diffMin < 0 ? `⚠️ Em andamento / Atrasado (${Math.abs(diffMin)} min)` : `⏰ Faltam ${diffMin} min! Próximo atendimento.`;
+      } else {
+        labelDiff = `Horário: ${o.time}`;
+      }
+    }
+
+    return `
+      <div class="alert-item ${isUrgent?'urgent':''}">
+        <div>
+          <strong>${escapeHtml(o.client)}</strong> — ${escapeHtml(o.service)} (${escapeHtml(o.employee||'A definir')})
+          <br><small class="${isUrgent?'':'muted'}">${labelDiff}</small>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <span class="badge ${o.status==='Concluído'?'b-ok':'b-warn'}">${o.status}</span>
+          ${o.status !== 'Concluído' ? `<button class="btn success" style="padding:4px 10px;font-size:11px" onclick="completeOrder('${o.id}')">✓ Concluir</button>` : ''}
+          <button class="btn-copy" onclick="copyWhatsappMessage('${o.id}')" title="Copiar mensagem WhatsApp">📋 Copiar</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderDashboardStats(){
+  const yr = document.getElementById('fYear')?.value.trim();
+  const mo = document.getElementById('fMonth')?.value;
+  const dy = document.getElementById('fDay')?.value.trim().padStart(2,'0');
+  const ph = document.getElementById('fPhone')?.value.trim().replace(/\D/g,'');
+  const sv = document.getElementById('fService')?.value;
+  const em = document.getElementById('fEmp')?.value;
+  const st = document.getElementById('fStatus')?.value;
+
+  const filtered = S.orders.filter(o=>{
+    if(sv && o.service !== sv) return false;
+    if(em && o.employee !== em) return false;
+    if(st && o.status !== st) return false;
+    if(ph && (!o.phone || !o.phone.replace(/\D/g,'').includes(ph))) return false;
+    
+    if(o.date){
+      const [oYr, oMo, oDy] = o.date.split('-');
+      if(yr && oYr !== yr) return false;
+      if(mo && oMo !== mo) return false;
+      if(dy && dy !== '00' && oDy !== dy) return false;
+    }
+    return true;
+  });
+
+  const fatPrev = filtered.filter(o=>o.status !== 'Cancelado').reduce((a,b)=>a+(Number(b.total)||0),0);
+  const fatReal = filtered.filter(o=>o.status === 'Concluído').reduce((a,b)=>a+(Number(b.total)||0),0);
+  
+  const dFatPrev = document.getElementById('dFatPrev');
+  const dFatReal = document.getElementById('dFatReal');
+  const dOrd = document.getElementById('dOrd');
+  const dTable = document.getElementById('dTable');
+
+  if(dFatPrev) dFatPrev.textContent = money(fatPrev);
+  if(dFatReal) dFatReal.textContent = money(fatReal);
+  if(dOrd) dOrd.textContent = filtered.length;
+  
+  if(dTable){
+    if(!filtered.length){
+      dTable.innerHTML = '<tr><td colspan="7" class="empty">Nenhum atendimento encontrado para os filtros selecionados.</td></tr>';
+      return;
+    }
+    dTable.innerHTML = filtered.map(o=>`
+      <tr>
+        <td><b>${escapeHtml(o.client)}</b></td>
+        <td>${escapeHtml(o.phone||'-')}</td>
+        <td>${escapeHtml(o.service||'-')}</td>
+        <td>${escapeHtml(o.employee||'-')}</td>
+        <td>${escapeHtml(o.date||'')} ${escapeHtml(o.time||'')}</td>
+        <td><span class="badge ${o.status==='Concluído'?'b-ok':o.status==='Cancelado'?'b-danger':'b-warn'}">${o.status}</span></td>
+        <td>${money(o.total)}</td>
+      </tr>
+    `).join('');
+  }
+}
+
+/* PDV */
+function pdv(){
+  const c = document.getElementById('appContent');
+  const clientOptions = S.clients.map(cl=>`<option value="${escapeHtml(cl.name)}">${escapeHtml(cl.name)} (${escapeHtml(cl.phone)})</option>`).join('');
+  
+  c.innerHTML = `
+    <div class="title"><h1>Novo Atendimento (PDV)</h1></div>
+    <div style="margin-bottom:14px" class="card">
+      <div class="formgrid">
+        <div class="field">
+          <label>Cliente Registro</label>
+          <select id="pdvClientSelect" class="input" onchange="syncPdvClientInput(this.value)">
+            <option value="">-- Selecionar Cliente Existente --</option>
+            ${clientOptions}
+          </select>
+        </div>
+        <div class="field">
+          <label>Nome do Cliente (para comanda)</label>
+          <input class="input" id="pdvClientName" placeholder="Digite o nome do cliente">
+        </div>
+      </div>
+    </div>
+    <div class="pos">
+      <div class="products">
+        ${S.products.map(p=>`
+          <div class="prod">
+            <img src="${p.img||placeholder(p.name)}">
+            <div class="pbody">
+              <b>${escapeHtml(p.name)}</b>
+              <div>${money(p.price)}</div>
+              <button class="btn primary" style="width:100%;margin-top:6px" onclick="addPdv('${escapeHtml(p.name)}', ${p.price})">Adicionar</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="card cart">
+        <h3>Comanda</h3>
+        <div id="cartList"></div>
+        <div class="total"><span>Total</span><span id="cartTot">R$ 0,00</span></div>
+        <button class="btn primary" style="width:100%" onclick="finishPdv()">Finalizar Atendimento</button>
+      </div>
+    </div>
+  `;
+  window.cart = [];
+  renderCartPdv();
+}
+
+function syncPdvClientInput(val){
+  if(val) document.getElementById('pdvClientName').value = val;
+}
+
+function addPdv(name, price){
+  window.cart.push({name, price});
+  renderCartPdv();
+}
+
+function renderCartPdv(){
+  const box = document.getElementById('cartList');
+  if(!box) return;
+  box.innerHTML = window.cart.map((i, idx)=>`
+    <div class="cartline">
+      <span>${i.name}</span>
+      <div style="display:flex;gap:6px;align-items:center">
+        <b>${money(i.price)}</b>
+        <button style="border:0;background:none;color:red" onclick="removePdvItem(${idx})">×</button>
+      </div>
+    </div>
+  `).join('') || '<div class="empty">Comanda vazia</div>';
+  const tot = window.cart.reduce((a,b)=>a+b.price,0);
+  document.getElementById('cartTot').textContent = money(tot);
+}
+
+function removePdvItem(idx){
+  window.cart.splice(idx,1);
+  renderCartPdv();
+}
+
+function finishPdv(){
+  if(!window.cart.length) return toast('Adicione serviços na comanda');
+  const clientName = document.getElementById('pdvClientName')?.value.trim() || 'Atendimento Balcão';
+  const tot = window.cart.reduce((a,b)=>a+b.price,0);
+  const today = new Date().toISOString().split('T')[0];
+
+  let clientObj = S.clients.find(c=>c.name.toLowerCase()===clientName.toLowerCase());
+  if(!clientObj && clientName !== 'Atendimento Balcão'){
+    clientObj = {id: Date.now(), name: clientName, phone: '', cpf: '', visitsGoal: 10};
+    S.clients.push(clientObj);
+  }
+
+  S.orders.push({
+    id: String(Date.now()).slice(-5),
+    client: clientName,
+    phone: clientObj ? clientObj.phone : '',
+    service: window.cart.map(x=>x.name).join(', '),
+    employee: 'Balcão',
+    date: today,
+    time: new Date().toLocaleTimeString().slice(0,5),
+    total: tot,
+    status: 'Concluído'
+  });
+
+  save();
+  toast('Atendimento concluído com sucesso!');
+  pdv();
+}
+
+/* AGENDAMENTOS */
+function orders(){
+  const c = document.getElementById('appContent');
+  const todayStr = new Date().toISOString().split('T')[0];
+  const todayOrders = S.orders.filter(o => o.date === todayStr && o.status !== 'Cancelado');
+  const totalToday = todayOrders.length;
+  const completedToday = todayOrders.filter(o => o.status === 'Concluído').length;
+  const pendingToday = todayOrders.filter(o => o.status !== 'Concluído').length;
+
+  c.innerHTML = `
+    <div class="title">
+      <h1>Agendamentos</h1>
+      <button class="btn primary" onclick="openAddModal('orders')">＋ Novo Agendamento</button>
+    </div>
+
+    <div class="cards" style="margin-bottom:20px">
+      <div class="card metric" style="border-left:4px solid var(--info)">
+        <div><div class="muted">Atendimentos Hoje</div><strong>${totalToday}</strong></div>
+        <div class="icon">📊</div>
+      </div>
+      <div class="card metric" style="border-left:4px solid var(--ok)">
+        <div><div class="muted">Concluídos Hoje</div><strong style="color:var(--ok)">${completedToday}</strong></div>
+        <div class="icon">✅</div>
+      </div>
+      <div class="card metric" style="border-left:4px solid var(--warn)">
+        <div><div class="muted">Faltam no Dia</div><strong style="color:var(--warn)">${pendingToday}</strong></div>
+        <div class="icon">⏳</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead><tr><th>Cliente</th><th>Serviço / Detalhes</th><th>Profissional / Data</th><th>Valor</th><th>Status / Ações</th></tr></thead>
+          <tbody>
+            ${S.orders.slice().reverse().map(o=>`
+              <tr>
+                <td>
+                  <b>${escapeHtml(o.client)}</b><br>
+                  <small class="muted">${escapeHtml(o.phone||'')}</small>
+                </td>
+                <td>${escapeHtml(o.service||'-')}</td>
+                <td>${escapeHtml(o.employee||'-')}<br><small class="muted">${escapeHtml(o.date||'')} ${escapeHtml(o.time||'')}</small></td>
+                <td>${money(o.total)}</td>
+                <td>
+                  <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+                    <span class="badge ${o.status==='Concluído'?'b-ok':o.status==='Cancelado'?'b-danger':'b-warn'}">${escapeHtml(o.status)}</span>
+                    ${o.status !== 'Concluído' ? `<button class="btn success" style="padding:5px 10px;font-size:12px" onclick="completeOrder('${o.id}')">✓ Concluir</button>` : ''}
+                    ${getWhatsappButton(o)}
+                    <button class="btn-copy" onclick="copyWhatsappMessage('${o.id}')" title="Copiar mensagem CTRL+C">📋 Copiar</button>
+                    <button class="btn ghost" onclick="openEditModal('orders', '${o.id}')">✏️</button>
+                    <button class="btn danger" onclick="deleteRecord('orders', '${o.id}')">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function completeOrder(id){
+  const order = S.orders.find(o=>String(o.id)===String(id));
+  if(order){
+    order.status = 'Concluído';
+    save();
+    toast('Atendimento marcado como Concluído!');
+    openScreen(document.body.classList.contains('storefront-mode') ? 'storefront' : 'orders');
+  }
+}
+
+function getWhatsappButton(order){
+  if(!order.phone) return '';
+  const cleanPhone = order.phone.replace(/\D/g,'');
+  if(!cleanPhone) return '';
+  const fullPhone = cleanPhone.length <= 11 ? '55' + cleanPhone : cleanPhone;
+  const msg = generateWhatsappText(order);
+
+  const link = `https://api.whatsapp.com/send?phone=${fullPhone}&text=${encodeURIComponent(msg)}`;
+  return `<a href="${link}" target="_blank" class="btn-wa">💬 Confirmar</a>`;
+}
+
+/* CLIENTES */
+function clients(){
+  const c = document.getElementById('appContent');
+  const currentYear = new Date().getFullYear();
+
+  c.innerHTML = `
+    <div class="title">
+      <h1>Clientes</h1>
+      <button class="btn primary" onclick="openAddModal('clients')">＋ Novo Cliente</button>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <input id="clientSearchInput" class="input" placeholder="🔍 Localizar cliente rapidamente por Nome, Telefone ou CPF..." oninput="renderClientsTable()">
+    </div>
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>CPF</th>
+              <th>Atendimentos no Ano (${currentYear})</th>
+              <th>Fidelidade / Meta</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="clientsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  renderClientsTable();
+}
+
+function renderClientsTable(){
+  const body = document.getElementById('clientsTableBody');
+  if(!body) return;
+  const q = (document.getElementById('clientSearchInput')?.value || '').toLowerCase().trim();
+  const currentYear = new Date().getFullYear();
+
+  const filtered = S.clients.filter(cl => {
+    if(!q) return true;
+    const nameMatch = cl.name.toLowerCase().includes(q);
+    const phoneMatch = cl.phone && cl.phone.replace(/\D/g,'').includes(q.replace(/\D/g,''));
+    const cpfMatch = cl.cpf && cl.cpf.replace(/\D/g,'').includes(q.replace(/\D/g,''));
+    return nameMatch || phoneMatch || cpfMatch;
+  });
+
+  if(!filtered.length){
+    body.innerHTML = '<tr><td colspan="6" class="empty">Nenhum cliente encontrado.</td></tr>';
+    return;
+  }
+
+  body.innerHTML = filtered.map(cl=>{
+    const count = getClientYearlyVisits(cl.name, cl.phone, currentYear);
+    const goal = cl.visitsGoal || 10;
+    const isWinner = count >= goal;
+
+    return `
+      <tr>
+        <td><b>${escapeHtml(cl.name)}</b></td>
+        <td>${escapeHtml(cl.phone||'-')}</td>
+        <td>${escapeHtml(cl.cpf||'-')}</td>
+        <td><strong style="font-size:15px">${count}</strong> visitas</td>
+        <td>
+          <span class="badge ${isWinner?'b-ok':'b-warn'}">
+            ${count} / ${goal} ${isWinner?'🎁 GANHOU BRINDE!':''}
+          </span>
+        </td>
+        <td>
+          <div style="display:flex;gap:6px">
+            <button class="btn ghost" onclick="openEditModal('clients', ${cl.id})">✏️ Editar</button>
+            <button class="btn danger" onclick="deleteRecord('clients', ${cl.id})">🗑️ Excluir</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function getClientYearlyVisits(name, phone, year){
+  const cleanPhone = phone ? phone.replace(/\D/g,'') : '';
+  return S.orders.filter(o=>{
+    const matchName = o.client && o.client.toLowerCase() === name.toLowerCase();
+    const matchPhone = cleanPhone && o.phone && o.phone.replace(/\D/g,'') === cleanPhone;
+    const isThisYear = o.date && o.date.startsWith(String(year));
+    return (matchName || matchPhone) && isThisYear && o.status !== 'Cancelado';
+  }).length;
+}
+
+function products(){ renderCrudTable('products', 'Serviços / Preços', ['img', 'name', 'cat', 'price'], ['Imagem', 'Serviço', 'Categoria', 'Preço']); }
+function employees(){ renderCrudTable('employees', 'Profissionais', ['name', 'role'], ['Nome', 'Especialidade']); }
+
+function renderCrudTable(key, title, cols, labels){
+  const c = document.getElementById('appContent');
+  c.innerHTML = `
+    <div class="title">
+      <h1>${title}</h1>
+      <button class="btn primary" onclick="openAddModal('${key}')">＋ Novo</button>
+    </div>
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead><tr>${labels.map(l=>`<th>${l}</th>`).join('')}<th>Ações</th></tr></thead>
+          <tbody>
+            ${S[key].map(item=>`
+              <tr>
+                ${cols.map(col=>{
+                  if(col==='price') return `<td>${money(item[col])}</td>`;
+                  if(col==='img') return `<td><img src="${item[col]||placeholder(item.name)}" style="width:40px;height:40px;border-radius:8px;object-fit:cover"></td>`;
+                  return `<td>${escapeHtml(item[col]||'-')}</td>`;
+                }).join('')}
+                <td>
+                  <div style="display:flex;gap:6px">
+                    <button class="btn ghost" onclick="openEditModal('${key}', ${item.id})">✏️ Editar</button>
+                    <button class="btn danger" onclick="deleteRecord('${key}', ${item.id})">🗑️ Excluir</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function openAddModal(key){ openFormModal(key, null); }
+function openEditModal(key, id){
+  const item = S[key].find(x=>String(x.id)===String(id));
+  if(item) openFormModal(key, item);
+}
+
+function openFormModal(key, item){
+  const isEdit = !!item;
+  let fields = '';
+  const statuses = S.company.customStatuses || ['Agendado', 'Em Andamento', 'Concluído', 'Cancelado'];
+
+  if(key==='products'){
+    fields = `
+      <div class="field full"><label>Nome do Serviço</label><input class="input" id="m_name" value="${escapeHtml(item?.name||'')}"></div>
+      <div class="field"><label>Categoria</label><input class="input" id="m_cat" value="${escapeHtml(item?.cat||'')}"></div>
+      <div class="field"><label>Preço (R$)</label><input class="input" type="number" id="m_price" value="${item?.price||''}"></div>
+      <div class="field full"><label>Descrição</label><input class="input" id="m_desc" value="${escapeHtml(item?.description||'')}"></div>
+      <div class="field full"><label>URL da Imagem ou Upload</label><input class="input" id="m_img_url" placeholder="https://..." value="${escapeHtml(item?.img||'')}"><input type="file" class="input" id="m_img_file" accept="image/*" style="margin-top:6px"></div>
+    `;
+  } else if(key==='clients'){
+    fields = `
+      <div class="field"><label>Nome Completo</label><input class="input" id="m_name" value="${escapeHtml(item?.name||'')}"></div>
+      <div class="field"><label>Telefone/WhatsApp</label><input class="input" id="m_phone" value="${escapeHtml(item?.phone||'')}"></div>
+      <div class="field"><label>CPF</label><input class="input" id="m_cpf" value="${escapeHtml(item?.cpf||'')}"></div>
+      <div class="field"><label>Meta Cartão Fidelidade (Visitas/Ano para Brinde)</label><input class="input" type="number" id="m_goal" value="${item?.visitsGoal||10}"></div>
+    `;
+  } else if(key==='employees'){
+    fields = `
+      <div class="field"><label>Nome do Profissional</label><input class="input" id="m_name" value="${escapeHtml(item?.name||'')}"></div>
+      <div class="field"><label>Especialidade / Cargo</label><input class="input" id="m_role" value="${escapeHtml(item?.role||'')}"></div>
+    `;
+  } else if(key==='orders'){
+    const today = new Date().toISOString().split('T')[0];
+    fields = `
+      <div class="field"><label>Nome do Cliente</label><input class="input" id="m_client" value="${escapeHtml(item?.client||'')}"></div>
+      <div class="field"><label>Telefone WhatsApp</label><input class="input" id="m_phone" value="${escapeHtml(item?.phone||'')}"></div>
+      <div class="field"><label>Serviço</label>
+        <select class="input" id="m_service">
+          ${S.products.map(p=>`<option value="${escapeHtml(p.name)}" ${item?.service===p.name?'selected':''}>${escapeHtml(p.name)} (${money(p.price)})</option>`).join('')}
+        </select>
+      </div>
+      <div class="field"><label>Profissional</label>
+        <select class="input" id="m_employee">
+          ${S.employees.map(e=>`<option value="${escapeHtml(e.name)}" ${item?.employee===e.name?'selected':''}>${escapeHtml(e.name)}</option>`).join('')}
+        </select>
+      </div>
+      <div class="field"><label>Data</label><input type="date" class="input" id="m_date" value="${item?.date||today}"></div>
+      <div class="field"><label>Horário</label>
+        <select class="input" id="m_time">
+          ${['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00','17:00'].map(h=>`<option ${item?.time===h?'selected':''}>${h}</option>`).join('')}
+        </select>
+      </div>
+      <div class="field"><label>Valor (R$)</label><input type="number" class="input" id="m_total" value="${item?.total||''}"></div>
+      <div class="field"><label>Status</label>
+        <select class="input" id="m_status">
+          ${statuses.map(st=>`<option value="${escapeHtml(st)}" ${item?.status===st?'selected':''}>${escapeHtml(st)}</option>`).join('')}
+        </select>
+      </div>
+    `;
+  }
+
+  document.getElementById('modalBox').innerHTML = `
+    <div class="modalhead">
+      <h3>${isEdit ? 'Editar' : 'Adicionar'} Registro</h3>
+      <button class="btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="formgrid">${fields}</div>
+    <button class="btn primary" style="width:100%;margin-top:16px" onclick="saveFormModal('${key}', ${item ? `'${item.id}'` : 'null'})">Salvar Dados</button>
+  `;
+  document.getElementById('modal').classList.add('show');
+}
+
+function saveFormModal(key, id){
+  const fileInput = document.getElementById('m_img_file');
+  
+  if(fileInput && fileInput.files && fileInput.files[0]){
+    convertImageToBase64(fileInput, (base64Img) => {
+      executeSaveFormModal(key, id, base64Img);
+    });
+  } else {
+    const urlImg = document.getElementById('m_img_url')?.value.trim();
+    executeSaveFormModal(key, id, urlImg || null);
+  }
+}
+
+function executeSaveFormModal(key, id, uploadedImg){
+  let target = id ? S[key].find(x=>String(x.id)===String(id)) : null;
+
+  if(key==='orders'){
+    const emp = document.getElementById('m_employee').value;
+    const date = document.getElementById('m_date').value;
+    const time = document.getElementById('m_time').value;
+    const status = document.getElementById('m_status').value;
+
+    if(status !== 'Cancelado' && !checkEmpAvailability(emp, date, time, id)){
+      return toast(`Horário indisponível! ${emp} já possui atendimento em ${date} às ${time}.`);
+    }
+  }
+
+  if(key==='products'){
+    const priceVal = Number(document.getElementById('m_price').value)||0;
+    const nameVal = document.getElementById('m_name').value;
+    if(!target){
+      target = {id: Date.now()};
+      S.products.push(target);
+    }
+    target.name = nameVal;
+    target.cat = document.getElementById('m_cat').value;
+    target.price = priceVal;
+    target.description = document.getElementById('m_desc').value;
+    target.img = uploadedImg || target.img || placeholder(nameVal);
+
+  } else if(key==='clients'){
+    const nameVal = document.getElementById('m_name').value;
+    if(!target){
+      target = {id: Date.now()};
+      S.clients.push(target);
+    }
+    target.name = nameVal;
+    target.phone = document.getElementById('m_phone').value;
+    target.cpf = document.getElementById('m_cpf').value;
+    target.visitsGoal = Number(document.getElementById('m_goal').value)||10;
+
+  } else if(key==='employees'){
+    if(!target){
+      target = {id: Date.now()};
+      S.employees.push(target);
+    }
+    target.name = document.getElementById('m_name').value;
+    target.role = document.getElementById('m_role').value;
+
+  } else if(key==='orders'){
+    const serviceName = document.getElementById('m_service').value;
+    const pObj = S.products.find(p=>p.name===serviceName);
+    const totalVal = Number(document.getElementById('m_total').value) || (pObj ? pObj.price : 0);
+
+    if(!target){
+      target = {id: String(Date.now()).slice(-5)};
+      S.orders.push(target);
+    }
+    target.client = document.getElementById('m_client').value;
+    target.phone = document.getElementById('m_phone').value;
+    target.service = serviceName;
+    target.employee = document.getElementById('m_employee').value;
+    target.date = document.getElementById('m_date').value;
+    target.time = document.getElementById('m_time').value;
+    target.total = totalVal;
+    target.status = document.getElementById('m_status').value;
+
+    registerClientIfNew(target.client, target.phone);
+  }
+
+  save();
+  closeModal();
+  toast('Salvo com sucesso!');
+  openScreen(key);
+}
+
+function deleteRecord(key, id){
+  if(!confirm('Tem certeza que deseja excluir este registro?')) return;
+  S[key] = S[key].filter(x=>String(x.id)!==String(id));
+  save();
+  toast('Registro excluído!');
+  openScreen(key);
+}
+
+/* CONFIGURAÇÕES */
+function settings(){
+  const c = document.getElementById('appContent');
+  const statuses = (S.company.customStatuses || ['Agendado', 'Em Andamento', 'Concluído', 'Cancelado']).join(', ');
+
+  c.innerHTML = `
+    <div class="card">
+      <h3>Configurações do Salão & Identidade Visual</h3>
+      <div class="formgrid" style="margin-top:14px">
+        <div class="field"><label>Nome do Salão</label><input class="input" id="cfg_name" value="${escapeHtml(S.company.name)}"></div>
+        <div class="field"><label>Telefone / WhatsApp Salão</label><input class="input" id="cfg_phone" value="${escapeHtml(S.company.whatsapp || S.company.phone)}"></div>
+        <div class="field full"><label>Endereço Completo</label><input class="input" id="cfg_addr" value="${escapeHtml(S.company.address)}"></div>
+        
+        <div class="field"><label>Status do Salão</label>
+          <select id="cfg_isOpen" class="input">
+            <option value="true" ${S.company.isOpen?'selected':''}>🟢 Aberto</option>
+            <option value="false" ${!S.company.isOpen?'selected':''}>🔴 Fechado</option>
+          </select>
+        </div>
+        <div class="field" style="display:flex;gap:8px">
+          <div style="flex:1"><label>Abertura</label><input type="time" class="input" id="cfg_openTime" value="${S.company.openTime||'08:00'}"></div>
+          <div style="flex:1"><label>Fechamento</label><input type="time" class="input" id="cfg_closeTime" value="${S.company.closeTime||'18:00'}"></div>
+        </div>
+
+        <div class="field full">
+          <label>Configuração de Opções de Status (separados por vírgula)</label>
+          <input class="input" id="cfg_statuses" value="${escapeHtml(statuses)}" placeholder="Ex: Agendado, Em Andamento, Concluído, Cancelado">
+        </div>
+
+        <div class="field"><label>Trocar Logo (Upload ou URL)</label><input type="file" class="input" id="cfg_logo_file" accept="image/*"><input class="input" id="cfg_logo_url" placeholder="https://..." style="margin-top:6px" value="${escapeHtml(S.company.logo)}"></div>
+        <div class="field"><label>Trocar Capa da Loja (Upload ou URL)</label><input type="file" class="input" id="cfg_cover_file" accept="image/*"><input class="input" id="cfg_cover_url" placeholder="https://..." style="margin-top:6px" value="${escapeHtml(S.company.cover)}"></div>
+      </div>
+      <div style="margin-top:20px;display:flex;gap:10px">
+        <button class="btn primary" onclick="saveCfg()">Salvar Alterações</button>
+        <button class="btn danger" onclick="resetSystemData()">Resetar Todos os Dados</button>
+      </div>
+    </div>
+  `;
+}
+
+function saveCfg(){
+  S.company.name = document.getElementById('cfg_name').value;
+  S.company.phone = document.getElementById('cfg_phone').value;
+  S.company.whatsapp = document.getElementById('cfg_phone').value;
+  S.company.address = document.getElementById('cfg_addr').value;
+  S.company.isOpen = document.getElementById('cfg_isOpen').value === 'true';
+  S.company.openTime = document.getElementById('cfg_openTime').value;
+  S.company.closeTime = document.getElementById('cfg_closeTime').value;
+
+  const rawStatuses = document.getElementById('cfg_statuses').value;
+  if(rawStatuses){
+    S.company.customStatuses = rawStatuses.split(',').map(s=>s.trim()).filter(Boolean);
+  }
+
+  const logoFile = document.getElementById('cfg_logo_file')?.files[0];
+  const coverFile = document.getElementById('cfg_cover_file')?.files[0];
+  const logoUrl = document.getElementById('cfg_logo_url').value.trim();
+  const coverUrl = document.getElementById('cfg_cover_url').value.trim();
+
+  if(logoUrl) S.company.logo = logoUrl;
+  if(coverUrl) S.company.cover = coverUrl;
+
+  let pending = 0;
+  const done = () => {
+    pending--;
+    if(pending<=0){
+      save();
+      toast('Configurações salvas!');
+      openScreen('settings');
+    }
+  };
+
+  if(logoFile){
+    pending++;
+    convertImageToBase64(document.getElementById('cfg_logo_file'), b64 => { S.company.logo = b64; done(); });
+  }
+  if(coverFile){
+    pending++;
+    convertImageToBase64(document.getElementById('cfg_cover_file'), b64 => { S.company.cover = b64; done(); });
+  }
+
+  if(pending === 0){
+    save();
+    toast('Configurações salvas!');
+  }
+}
+
+function resetSystemData(){
+  if(confirm('Atenção: Isso irá apagar todos os dados e restaurar o sistema do zero. Deseja continuar?')){
+    localStorage.removeItem('gestorpro_beauty');
+    location.reload();
+  }
+}
+
+function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function placeholder(text){
+  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+      <defs>
+        <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#6f42c1"/>
+          <stop offset="100%" stop-color="#8b5cf6"/>
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g)"/>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, Arial" font-size="20" font-weight="bold" fill="#ffffff">${text}</text>
+    </svg>
+  `);
+}
+
+function initApp(){
+  buildNav();
+  updateBrandUI();
+  openScreen('storefront');
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+</script>
+</body>
+</html>
